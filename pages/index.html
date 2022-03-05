@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Data User</title>
+  <meta name="og:title" property="og:title" content="Get Data User">
+  <meta name="description" content="Get Data User">
+  <meta name="robots" content="index, follow">
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://cep.jonatas.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Search for a zip cod">
+  <meta property="og:description" content="Get Data User">
+  <meta property="og:image" content="https://www.site-shot.com/cached_image/_zTbXIzhEey1MgJCrBEAAg">
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="720" />
+  <meta property="og:image:height" content="480" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="cep.jonatas.app">
+  <meta property="twitter:url" content="https://cep.jonatas.app/">
+  <meta name="twitter:title" content="Search for a zip cod">
+  <meta name="twitter:description" content="Get Data User">
+  <meta name="twitter:image" content="https://www.site-shot.com/cached_image/_zTbXIzhEey1MgJCrBEAAg">
+
+  <!-- <meta http-equiv="refresh" content="3"> -->
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: row;
+  background: pink;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+}
+
+.totalbox {
+  width: 40%;
+  height: auto;
+
+  padding: 10px 30px;
+  background: #fff;
+  max-width: 360px;
+  margin: 100px 0;
+  padding: 50px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.cepForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  padding: 10px;
+  font-family: "Ubuntu", "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  -webkit-appearance: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.boxcheckbox {
+  margin-top: 10px;
+  /* display: grid; */
+}
+
+button {
+  margin-top: 20px;
+}
+
+.idBtn {
+  background: rgb(250, 113, 136);
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 30px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+}
+
+.idBtn:hover,
+.idBtn:focus {
+  background: rgb(230, 106, 127);
+}
+
+.boxcheckbox label {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+#resultTitle {
+  display: none;
+  transition: all 0.5s linear;
+}
+
+.resultUser {
+  display: none;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 25px 50px 0 50px;
+  transition: all 0.5s linear;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.resultUser div:last-child {
+  margin-bottom: 25px;
+}
+
+.resultUser div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5px;
+}
+
+.resultUser div label {
+  margin-top: 20px;
+}
+
+.resultUser div input {
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 900px) {
+  .totalbox {
+    width: 70%;
+  }
+
+  .resultUser {
+    margin-top: 10px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .resultUser div {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .totalbox {
+    font-size: .7rem;
+  }
+
+  .idBtn {
+    font-size: .7rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .totalbox {
+    width: 50%;
+  }
+}
+
+.loader{
+  margin-top: 30px;
+  height: auto;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  display: none;
+  vertical-align: top;
+  transition: all 0.5s linear;
+}
+
+svg path,
+svg rect{
+  fill: #FF6700;
+}
+  </style>
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5593915309329672" data-ad-slot="7238080479"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <div class="totalbox border">
+    <h2>Get Data User</h2>
+
+    <form class="userForm">
+      <input id="id" placeholder="ID user" type="text" required autofocus />
+    </form>
+
+    <div class="loader">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;"
+        xml:space="preserve">
+        <rect x="0" y="0" width="4" height="10" fill="#333">
+          <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+            begin="0" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="10" y="0" width="4" height="10" fill="#333">
+          <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+            begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+        <rect x="20" y="0" width="4" height="10" fill="#333">
+          <animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0"
+            begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+        </rect>
+      </svg>
+    </div>
+
+    <h2 id="resultTitle">Result's</h2>
+    <div class="resultUser" id="resultUser">
+    </div>
+    <div class="boxcheckbox">
+      <button type="button" class="idBtn">Search</button>
+    </div>
+  </div>
+
+  <!-- ad1 -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5593915309329672" data-ad-slot="7238080479"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  <script>
+    const inputIdUser = document.querySelector('#id');
+      const resultTitle = document.querySelector('#resultTitle');
+      const resultUser = document.querySelector('#resultUser');
+      const idBtn = document.querySelector('.idBtn');
+      const loader = document.querySelector('.loader');
+
+      async function seachUser(id) {
+        const idFormatted = id.replace(/\D/g, '').replace('-', '');
+        if (idFormatted.length !== 8) {
+          inputIdUser.style.border = '1px solid red';
+        }
+
+        console.log(idFormatted);
+        loader.style.display = 'inline-block';
+        resultUser.style.display = 'none';
+        resultTitle.style.display = 'none';
+
+        await fetch(`https://3001-jonatasjs-testjsonserver-r497s0rp9zd.ws-us34.gitpod.io/user/${idFormatted}/`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.id == 'undefined' || data.id == undefined) {
+              resultTitle.innerHTML = 'Usuário não encontrado';
+              resultTitle.style.display = 'inline-block';
+              inputIdUser.style.border = '1px solid red';
+              loader.style.display = 'none';
+              return;
+            }
+
+            resultUser.innerHTML = `
+          <div>
+            <label>ID:</label>
+            <input placeholder="${data.id}" type="text" disabled value="${data.id}"></input>
+          </div>
+        
+          <div>
+            <label>Nome:</label>
+            <input placeholder="${data.name}" type="text" disabled value="${data.name}"></input>
+          </div>
+        
+          <div>
+            <label>Profissão:</label>
+            <input placeholder="${data.profession}" type="text" disabled value="${data.profession}"></input>
+          </div>
+      `;
+
+            inputIdUser.setAttribute('autofocus', 'false');
+            loader.style.display = 'none';
+            resultUser.style.display = 'grid';
+            resultTitle.style.display = 'block';
+            inputIdUser.style.border = '1px solid green';
+          })
+          .catch(err => {
+            resultUser.innerHTML = `
+        <input
+          type="text"
+          disabled
+          placeholder="Usuário não encontrado"
+          value="Usuário não encontrado"
+          style="margin-bottom: 25px;"
+        ></input>
+      `;
+            inputIdUser.style.border = '1px solid red';
+
+            loader.style.display = 'none';
+            resultUser.style.display = 'grid';
+            resultTitle.style.display = 'block';
+          });
+
+      }
+
+      idBtn.addEventListener('click', e => {
+        e.preventDefault();
+        seachUser(inputIdUser.value);
+        console.log(inputIdUser.value);
+      });
+
+      document.addEventListener('keypress', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          seachUser(inputIdUser.value);
+          console.log(inputIdUser.value);
+        }
+      });
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5593915309329672"
+    crossorigin="anonymous"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-209667197-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-209667197-1');
+  </script>
+</body>
+
+</html>
